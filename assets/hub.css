@@ -1,108 +1,92 @@
-/* yondo.global — "One Y, two roads".
-   The Yondo Y is a fork: the page splits into the two brands, each shown in its own look so the difference is
-   obvious at a glance. Experiences: a teal ticket, gold, the mascot, Unbounded. Education: a deep green board with
-   a handwritten sticky note. The hub itself stays quiet: Outfit on mint-white. */
-@font-face { font-family: "Outfit"; src: url("outfit-latin-wght-normal.woff2") format("woff2-variations"); font-weight: 100 900; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-@font-face { font-family: "Outfit"; src: url("outfit-latin-ext-wght-normal.woff2") format("woff2-variations"); font-weight: 100 900; font-display: swap; unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+A720-A7FF; }
-@font-face { font-family: "Unbounded"; src: url("unbounded-latin-wght-normal.woff2") format("woff2-variations"); font-weight: 200 900; font-display: swap; }
-@font-face { font-family: "Kalam"; src: url("kalam-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+/* yondo.global — the Yondo hub. Say plainly what each Yondo brand does, then show it in one photograph each.
+   Headlines in Bricolage Grotesque, text in Outfit (both OFL, self-hosted). Experiences keeps its waving mascot. */
+@font-face { font-family: "Outfit"; src: url("outfit-latin-wght-normal.woff2") format("woff2-variations"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Bricolage Grotesque"; src: url("bricolage-latin-opsz.woff2") format("woff2-variations"); font-weight: 200 800; font-display: swap; }
 
 :root {
   --bg: #f3f7f6; --ink: #0f2b2e; --ink-2: #48646a; --line: #d4e2e0; --white: #fff;
-  --exp: #00939f; --exp-deep: #05545c; --exp-night: #03343a; --gold: #ffc531; --gold-deep: #e5a400;
-  --edu: #0d4a44; --hi: #ffd43b; --hi-deep: #e6b400; --note: #ffe46b; --pen: #2443b0; --steel: #7f8c95;
-  --wrap: 1180px;
+  --exp: #00939f; --exp-deep: #05545c; --gold: #ffc531; --gold-deep: #e5a400;
+  --edu: #0c4842; --edu-teal: #0b6e64; --hi: #ffc83d; --pen: #2443b0;
+  --wrap: 1200px;
   --sans: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --display: "Unbounded", "Arial Black", system-ui, sans-serif;
-  --hand: "Kalam", "Comic Neue", cursive;
+  --display: "Bricolage Grotesque", "Outfit", system-ui, sans-serif;
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-padding-top: 84px; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 400 18px/1.6 var(--sans); }
+body { margin: 0; background: var(--white); color: var(--ink); font: 400 18px/1.6 var(--sans); }
 img { max-width: 100%; display: block; }
 a { color: var(--edu); text-underline-offset: 3px; }
 h1, h2, h3, p, ul { margin: 0; }
+h1, h2 { font-family: var(--display); font-weight: 750; text-wrap: balance; }
 :focus-visible { outline: 3px solid var(--pen); outline-offset: 3px; border-radius: 6px; }
 .wrap { width: min(var(--wrap), 100% - 40px); margin-inline: auto; }
 .skip { position: absolute; left: -9999px; top: 8px; z-index: 50; background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 8px; }
 .skip:focus { left: 12px; }
 
 /* ---------------------------------------------------------------- bar */
-.bar { position: sticky; top: 0; z-index: 20; background: rgba(243,247,246,.94); border-bottom: 1px solid var(--line); }
+.bar { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); }
 .bar-in { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 68px; }
 .logo img { height: 40px; width: auto; }
 .bar-nav { display: flex; align-items: center; gap: 4px; }
 .bar-nav a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 14px; border-radius: 999px; color: var(--ink); font-weight: 600; font-size: 16px; text-decoration: none; }
 .bar-nav .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
 .nav-exp .dot { background: var(--exp); }
-.nav-edu .dot { background: var(--edu); box-shadow: 0 0 0 2px var(--note); }
+.nav-edu .dot { background: var(--edu-teal); }
 .nav-exp:hover { background: #dcf0f1; } .nav-edu:hover { background: #e0efe9; }
 .nav-more { color: var(--ink-2) !important; font-weight: 500 !important; }
 .nav-more:hover { background: #e6eeed; }
 
-/* ---------------------------------------------------------------- hero: the fork */
-.hero { padding: clamp(40px, 6vw, 76px) 0 clamp(56px, 7vw, 96px); }
-.hero h1 { text-align: center; font-size: clamp(46px, 7.6vw, 108px); line-height: .96; letter-spacing: -0.05em; font-weight: 800; }
-.hero-sub { text-align: center; max-width: 36em; margin: 20px auto 0; font-size: clamp(18px, 1.6vw, 21px); line-height: 1.5; color: var(--ink-2); text-wrap: balance; }
-.fork { position: relative; height: 104px; margin-top: 26px; }
-.fork .road { width: 100%; height: 100%; display: block; overflow: visible; }
-.fork .road path { fill: none; stroke-width: 6; stroke-linecap: round; vector-effect: non-scaling-stroke; }
-.fork .stem { stroke: var(--gold); }
-.fork .arm.exp { stroke: var(--exp); }
-.fork .arm.edu { stroke: var(--edu); }
-.fork .star { position: absolute; left: 50%; top: 42px; width: 36px; height: 36px; transform: translate(-50%, -50%); fill: var(--gold); filter: drop-shadow(0 2px 3px rgba(0,0,0,.18)); }
-.doors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; }
-.door { position: relative; }
-.brand-tag { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; letter-spacing: .01em; margin-bottom: 14px; }
-.door-line { margin-top: 16px; font-size: 17px; line-height: 1.55; color: rgba(255,255,255,.9); }
+/* ---------------------------------------------------------------- opening: what Yondo is, in one line */
+.opening { padding: clamp(44px, 6vw, 80px) 0 clamp(28px, 3vw, 40px); }
+.opening h1 { font-size: clamp(42px, 6.4vw, 84px); line-height: .98; letter-spacing: -0.035em; max-width: 15ch; }
+.opening h1 span { display: block; color: var(--edu-teal); }
+.opening h1 .x { color: var(--exp); display: inline; }
+.opening .lead { margin-top: 22px; max-width: 40em; font-size: clamp(18px, 1.6vw, 21px); line-height: 1.55; color: var(--ink-2); }
+
+/* ---------------------------------------------------------------- the two brands, one photograph each */
+.brands { padding: clamp(20px, 3vw, 36px) 0 clamp(64px, 8vw, 104px); }
+.brands-in { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3vw, 36px); }
+.bp { position: relative; display: flex; flex-direction: column; border-radius: 26px; overflow: hidden; color: #fff; }
+.bp-exp { background: var(--exp-deep); }
+.bp-edu { background: var(--edu); }
+.bp-photo { position: relative; aspect-ratio: 16 / 10; background: #0b3a3e; }
+.bp-photo img.ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.bp-exp .bp-photo img.ph { object-position: 50% 70%; }
+.bp-edu .bp-photo img.ph { object-position: 20% 50%; }
+.bp-exp .mascot { position: absolute; right: 18px; bottom: -34px; height: 190px; width: auto; transform: rotate(6deg); pointer-events: none; filter: drop-shadow(0 10px 14px rgba(0,0,0,.35)); z-index: 1; }
+.bp-body { padding: 28px 32px 32px; display: flex; flex-direction: column; flex: 1; }
+.bp-name { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; color: rgba(255,255,255,.85); }
+.bp-name .dot { width: 10px; height: 10px; border-radius: 50%; }
+.bp-exp .bp-name .dot { background: var(--gold); } .bp-edu .bp-name .dot { background: var(--hi); }
+.bp h2 { margin-top: 10px; font-size: clamp(28px, 2.8vw, 38px); line-height: 1.04; letter-spacing: -0.025em; color: #fff; max-width: 16ch; }
+.bp-exp h2 { padding-right: 120px; }
+.bp-line { margin-top: 14px; font-size: 17px; line-height: 1.55; color: rgba(255,255,255,.88); max-width: 34em; }
 .chips { list-style: none; padding: 0; margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px; position: relative; z-index: 2; }
 .chips a { display: inline-flex; align-items: center; min-height: 40px; padding: 6px 15px; border-radius: 999px; font-size: 15px; font-weight: 600; color: #fff; text-decoration: none;
-  background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.28); }
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.28); }
 .chips a:hover { background: rgba(255,255,255,.24); }
-.cta { display: inline-flex; align-items: center; gap: 10px; margin-top: 24px; min-height: 52px; padding: 12px 24px; border-radius: 999px; font-weight: 700; font-size: 17px; color: var(--ink); text-decoration: none; }
-.cta::after { content: ""; position: absolute; inset: 0; border-radius: 26px; }     /* the whole card opens the brand */
-.cta .go { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
-.door:hover .cta .go { transform: translateX(3px); }
-.door :focus-visible { outline-color: var(--hi); }
-
-/* Experiences: a ticket with punched edges, and the mascot stepping out of it */
-.door-exp { filter: drop-shadow(0 20px 24px rgba(3,52,58,.26)); }
-.ticket { position: relative; height: 100%; padding: 34px 210px 36px 36px; border-radius: 26px; color: #fff;
-  background: radial-gradient(440px 280px at 88% 6%, rgba(255,197,49,.16), transparent 70%), linear-gradient(150deg, #00747e 0%, var(--exp-deep) 58%, var(--exp-night) 100%);
-  -webkit-mask: radial-gradient(circle 16px at 0 62%, #0000 96%, #000 100%) left / 51% 100% no-repeat, radial-gradient(circle 16px at 100% 62%, #0000 96%, #000 100%) right / 51% 100% no-repeat;
-          mask: radial-gradient(circle 16px at 0 62%, #0000 96%, #000 100%) left / 51% 100% no-repeat, radial-gradient(circle 16px at 100% 62%, #0000 96%, #000 100%) right / 51% 100% no-repeat; }
-.exp-h { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 3.3vw, 44px); line-height: 1.02; letter-spacing: -0.035em; }
-.exp-h span { color: var(--gold); }
-.cta-exp { background: var(--gold); box-shadow: 0 3px 0 var(--gold-deep); }
-.cta-exp:hover { background: #ffd05c; }
-.door-exp .mascot { position: absolute; right: 4px; bottom: -10px; height: 316px; width: auto; transform: rotate(5deg); transform-origin: 50% 100%; pointer-events: none; }
+.cta { align-self: flex-start; display: inline-flex; align-items: center; margin-top: auto; min-height: 52px; padding: 12px 24px; border-radius: 999px; font-weight: 700; font-size: 17px; color: var(--ink); text-decoration: none; }
+.chips + .cta { margin-top: 24px; }
+.cta::after { content: ""; position: absolute; inset: 0; border-radius: 26px; }      /* the whole panel opens the brand */
+.chips, .chips a { position: relative; z-index: 2; }
+.cta-exp { background: var(--gold); } .cta-exp:hover { background: #ffd05c; }
+.cta-edu { background: var(--hi); } .cta-edu:hover { background: #ffd666; }
+.bp :focus-visible { outline-color: var(--hi); }
+.credit { margin-top: 10px; font-size: 13px; color: var(--ink-2); }
 @media (prefers-reduced-motion: no-preference) {
-  .door-exp .mascot { transition: transform .35s cubic-bezier(.2,1.4,.4,1); }
-  .door-exp:hover .mascot { transform: rotate(9deg) translateY(-6px); }
+  .bp-exp .mascot { transition: transform .35s cubic-bezier(.2,1.4,.4,1); }
+  .bp-exp:hover .mascot { transform: rotate(10deg) translateY(-6px); }
 }
 
-/* Education: a deep green board with the student's sticky note clipped to it */
-.board { position: relative; height: 100%; padding: 34px 36px 36px; border-radius: 26px; color: #fff;
-  background: radial-gradient(460px 320px at 92% 8%, rgba(255,255,255,.09), transparent 70%), var(--edu); box-shadow: 0 20px 28px -14px rgba(13,74,68,.45); }
-.board .brand-tag, .board .edu-h { padding-right: 200px; }
-.edu-h { font-weight: 800; font-size: clamp(30px, 3.2vw, 42px); line-height: 1.04; letter-spacing: -0.035em; }
-.cta-edu { background: var(--hi); box-shadow: 0 3px 0 var(--hi-deep); }
-.cta-edu:hover { background: #ffdc5e; }
-.note { position: absolute; z-index: 1; top: 30px; right: 26px; width: 190px; padding: 36px 18px 22px; transform: rotate(4deg); pointer-events: none;
-  background: linear-gradient(168deg, #fff6c4 0%, var(--note) 46%, #f2cf3b 100%); color: var(--pen); font: 400 23px/1.3 var(--hand);
-  border-radius: 2px 3px 18px 3px / 2px 3px 22px 3px; box-shadow: 0 1px 1px rgba(0,0,0,.05), 3px 4px 0 rgba(0,0,0,.04), 10px 20px 24px -14px rgba(0,0,0,.55); }
-.note .clip { position: absolute; top: -26px; left: 22px; width: 24px; height: 62px; overflow: visible; fill: none; stroke: var(--steel); stroke-width: 3.2; stroke-linecap: round;
-  filter: drop-shadow(1px 2px 1px rgba(0,0,0,.25)); }
-
 /* ---------------------------------------------------------------- chooser */
-.choose { background: var(--white); padding: clamp(56px, 7vw, 96px) 0; border-top: 1px solid var(--line); }
-.choose h2 { font-size: clamp(30px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.035em; }
+.choose { background: var(--bg); padding: clamp(56px, 7vw, 96px) 0; }
+.choose h2 { font-size: clamp(30px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.03em; }
 .choose-sub { margin-top: 10px; color: var(--ink-2); font-size: 19px; }
 .picks { list-style: none; padding: 0; margin-top: 30px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 22px; }
 .pick { display: grid; grid-template-columns: minmax(0, 1fr) auto 22px; align-items: center; gap: 14px; min-height: 68px; padding: 16px 18px 16px 20px;
-  border-radius: 16px; background: var(--bg); color: var(--ink); text-decoration: none; border: 1.5px solid transparent; border-left: 6px solid; transition: border-color .15s, background .15s; }
-.pick.exp { border-left-color: var(--exp); } .pick.edu { border-left-color: var(--edu); }
-.pick:hover { background: #fff; border-top-color: var(--line); border-right-color: var(--line); border-bottom-color: var(--line); }
+  border-radius: 16px; background: var(--white); color: var(--ink); text-decoration: none; border: 1.5px solid transparent; border-left: 6px solid; transition: border-color .15s; }
+.pick.exp { border-left-color: var(--exp); } .pick.edu { border-left-color: var(--edu-teal); }
+.pick:hover { border-top-color: var(--line); border-right-color: var(--line); border-bottom-color: var(--line); }
 .pick-q { font-weight: 600; font-size: 18px; line-height: 1.35; }
 .pick-to { font-size: 14px; font-weight: 700; padding: 4px 11px; border-radius: 999px; white-space: nowrap; }
 .pick.exp .pick-to { background: #d9eff1; color: var(--exp-deep); }
@@ -113,7 +97,7 @@ h1, h2, h3, p, ul { margin: 0; }
 /* ---------------------------------------------------------------- about */
 .about { padding: clamp(56px, 7vw, 96px) 0; }
 .about-in { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 48px; align-items: end; }
-.about h2 { font-size: clamp(32px, 4.2vw, 56px); line-height: 1.02; letter-spacing: -0.04em; max-width: 14ch; }
+.about h2 { font-size: clamp(32px, 4.2vw, 56px); line-height: 1.02; letter-spacing: -0.035em; max-width: 14ch; }
 .about-lead { margin-top: 16px; font-size: 20px; color: var(--ink-2); max-width: 32em; }
 .about-side { color: var(--ink-2); }
 .about-side p + p { margin-top: 12px; }
@@ -123,54 +107,37 @@ h1, h2, h3, p, ul { margin: 0; }
 .foot a { color: #fff; }
 .foot-cols { display: grid; grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(0, 1fr)); gap: 32px; }
 .foot-brand img { width: 48px; height: 48px; margin-bottom: 12px; }
-.foot h2 { font-size: 16px; color: #fff; margin-bottom: 12px; }
+.foot h2 { font: 600 16px/1.3 var(--sans); color: #fff; margin-bottom: 12px; }
 .foot ul { list-style: none; padding: 0; display: grid; gap: 4px; }
 .foot li a { display: inline-block; padding: 3px 0; }
 .fine { margin-top: 40px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.14); font-size: 14px; color: #a8c2be; }
 
 /* ---------------------------------------------------------------- tablets and phones */
 @media (max-width: 900px) {
-  .fork { display: none; }
-  .doors { grid-template-columns: minmax(0, 1fr); gap: 24px; margin-top: 34px; }
-  .ticket { padding-right: 230px; }
-  .door-exp .mascot { height: 280px; }
+  .brands-in { grid-template-columns: minmax(0, 1fr); }
   .foot-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (min-width: 761px) and (max-width: 900px) {
-  .board .door-line { padding-right: 214px; }
-}
-@media (min-width: 421px) and (max-width: 760px) {
-  .door-exp .door-line { padding-right: 124px; }
-  .board .door-line { padding-right: 128px; }
 }
 @media (max-width: 760px) {
   .bar-in { min-height: 60px; }
   .logo img { height: 32px; }
   .nav-more { display: none !important; }
   .bar-nav a { min-height: 40px; padding: 6px 12px; font-size: 15px; background: #fff; border: 1.5px solid var(--line); }
-  .hero { padding: 28px 0 40px; }
-  .hero h1, .hero-sub { text-align: left; }
-  .hero h1 { font-size: clamp(44px, 13vw, 58px); }
-  .hero-sub { margin: 14px 0 0; font-size: 17px; }
-  .fork { display: none; }
-  .doors { grid-template-columns: minmax(0, 1fr); gap: 18px; margin-top: 26px; }
-  .ticket, .board { padding: 20px 20px 22px; border-radius: 20px; }
+  .opening { padding: 30px 0 18px; }
+  .opening h1 { font-size: clamp(38px, 11vw, 54px); }
+  .opening .lead { font-size: 17px; margin-top: 16px; }
+  .bp { border-radius: 20px; }
   .cta::after { border-radius: 20px; }
-  .brand-tag { font-size: 14px; margin-bottom: 8px; }
-  .door-exp .ticket .brand-tag, .door-exp .exp-h { padding-right: 112px; }
-  .exp-h, .edu-h { font-size: 25px; }
-  .door-line { font-size: 15px; margin-top: 10px; }
+  .bp-body { padding: 20px 20px 22px; }
+  .bp h2 { font-size: 27px; }
+  .bp-exp h2 { padding-right: 0; }
+  .bp-exp .mascot { height: 120px; bottom: -20px; right: 12px; }
+  .bp-line { font-size: 16px; margin-top: 10px; }
   .chips { flex-wrap: nowrap; overflow-x: auto; margin: 14px -20px 0; padding: 2px 20px 4px; scrollbar-width: none; }
   .chips::-webkit-scrollbar { display: none; }
   .chips li { flex: none; }
   .chips a { min-height: 36px; padding: 5px 13px; font-size: 14px; }
-  .cta { margin-top: 14px; min-height: 46px; padding: 10px 18px; font-size: 16px; }
-  .door-exp .mascot { top: -22px; bottom: auto; right: 8px; height: 150px; }
-  .ticket { -webkit-mask: none; mask: none; }
-  .board .door-line { margin-top: 22px; }
-  .board .brand-tag, .board .edu-h { padding-right: 116px; }
-  .note { top: 18px; right: 14px; width: 112px; font-size: 16px; padding: 24px 10px 12px; transform: rotate(5deg); }
-  .note .clip { top: -20px; left: 14px; width: 18px; height: 48px; }
+  .chips + .cta { margin-top: 16px; }
+  .cta { min-height: 46px; padding: 10px 18px; font-size: 16px; }
   .picks { grid-template-columns: minmax(0, 1fr); gap: 10px; }
   .pick { grid-template-columns: minmax(0, 1fr) 22px; row-gap: 6px; min-height: 0; padding: 14px 14px 14px 16px; }
   .pick-q { font-size: 16px; }
@@ -180,4 +147,4 @@ h1, h2, h3, p, ul { margin: 0; }
   .foot-cols { grid-template-columns: 1fr 1fr; gap: 26px 20px; }
   .foot-brand { grid-column: 1 / -1; }
 }
-@media (prefers-reduced-motion: reduce) { .cta .go, .pick .go { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .pick .go { transition: none; } }
