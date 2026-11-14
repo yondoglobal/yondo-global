@@ -1,0 +1,10 @@
+# Yondo
+
+> Yondo is a family of student-first brands by Bindal Univentures LLC, Sharjah Media City (Shams), UAE (licence no. 2433960.01).
+
+## Brands
+- [Yondo Experiences](https://experiences.yondo.global/): theme parks, desert nights, yachts and day trips across the UAE, planned for students, confirmed on WhatsApp and paid by secure link.
+- [Yondo Education](https://education.yondo.global/): career and study-abroad counselling for students and families; the first conversation is free. Summary: https://education.yondo.global/llms.txt
+
+## Contact
+- Email: hello@yondo.global
